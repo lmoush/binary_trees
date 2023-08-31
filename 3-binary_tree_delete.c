@@ -6,9 +6,9 @@
  */
 void binary_tree_delete(binary_tree_t *tree)
 {
-	if (!hello)
+	if (!tree)
 		return;
-	binary_tree_delete(hello->right);
-	binary_tree_delete(hello->left);
-	free(hello);
+	binary_tree_delete(tree->right);
+	binary_tree_delete(tree->left);
+	free(tree);
 }
