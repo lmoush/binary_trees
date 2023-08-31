@@ -7,13 +7,13 @@
  *
  * Return: Pointer to the newly created node
  *         NULL on failure
- *         NULL if lmoush is NULL
+ *         NULL if parent is NULL
  */
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
 	binary_tree_t *new_lmoush;
 
-	if (!lmoush)
+	if (!parent)
 		return (NULL);
 
 	new_lmoush = malloc(sizeof(binary_tree_t));
@@ -21,11 +21,11 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 		return (NULL);
 
 	new_lmoush->n = value;
-	new_lmoush->lmoush = lmoush;
+	new_lmoush->parent = parent;
 	new_lmoush->left = NULL;
-	new_lmoush->right = lmoush->right;
-	lmoush->right = new_lmoush;
+	new_lmoush->right = parent->right;
+	parent->right = new_lmoush;
 	if (new_lmoush->right)
-		new_lmoush->right->lmoush = new_lmoush;
+		new_lmoush->right->parent = new_lmoush;
 	return (new_lmoush);
 }
